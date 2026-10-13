@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+<title>InstaYt Downloader</title>
+<style>
+:root{--ink:#172542;--muted:#6b7fa2;--line:#e3eafa;--purple:#633cff;--pink:#ed38a2;--blue:#3979ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}a{text-decoration:none;color:inherit}.wrap{width:min(1160px,calc(100% - 32px));margin:auto}
+header{position:sticky;top:0;z-index:5;background:#ffffffed;backdrop-filter:blur(14px);border-bottom:1px solid #edf1fa}.nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:850;letter-spacing:-.5px}.logo{width:40px;height:40px;border-radius:13px;background:linear-gradient(145deg,#3778ff,#9c3cff);color:#fff;display:grid;place-items:center;font-size:22px;box-shadow:0 8px 20px #6b54ff38}.brand small{display:block;font-size:11px;letter-spacing:1px;color:#91a0bd;font-weight:600}.navlinks{display:flex;align-items:center;gap:22px}.navlinks a{font-size:12px;font-weight:700;color:#324769}.navlinks a:hover{color:var(--purple)}.menu{display:none;background:white;border:1px solid var(--line);border-radius:10px;padding:9px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:28px;padding:58px 0 43px;background:radial-gradient(ellipse at 82% 40%,#f2eaff 0,transparent 38%),radial-gradient(ellipse at 5% 5%,#f1f7ff 0,transparent 35%)}.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid #e5e8ff;background:#fff;border-radius:30px;padding:8px 12px;color:#6443df;font-size:12px;font-weight:750}.dot{width:7px;height:7px;background:#21c58a;border-radius:50%}h1{font-size:clamp(36px,5vw,60px);line-height:1.05;letter-spacing:-2.5px;margin:21px 0 17px;font-weight:900}h1 span{background:linear-gradient(90deg,#7d35f5,#3f6cff,#ed3da5);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{font-size:16px;line-height:1.75;color:var(--muted);max-width:510px;margin:0}.checks{display:flex;flex-wrap:wrap;gap:15px;margin-top:24px;color:#405576;font-size:12px}.checks span{display:flex;align-items:center;gap:7px}.checkicon{display:grid;place-items:center;background:#eef3ff;color:#4b65ff;width:28px;height:28px;border-radius:9px;font-size:15px}.heroart{min-height:275px;display:grid;place-items:center;position:relative}.phone{width:205px;height:275px;border:7px solid #fff;border-radius:34px;transform:rotate(7deg);background:linear-gradient(155deg,#f8f6ff,#eaf2ff);box-shadow:0 28px 60px #6453c52b,0 0 0 2px #dedbff;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:15px;position:relative}.phone:before{content:"";position:absolute;top:9px;width:52px;height:5px;border-radius:10px;background:#d5d8ee}.bigicon{font-size:60px;filter:drop-shadow(0 10px 10px #a7a0e655)}.mini{font-size:12px;color:#7b87ad;background:#fff;border-radius:20px;padding:10px 20px;box-shadow:0 5px 18px #7772}.downloadbubble{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#397bff,#8b35f7);color:#fff;display:grid;place-items:center;font-size:26px;box-shadow:0 10px 24px #6749ec55}.float{position:absolute;padding:12px 15px;background:#fff;border:1px solid #f0edff;border-radius:16px;box-shadow:0 12px 35px #403b8020;font-size:25px}.f1{left:4%;top:23%}.f2{right:4%;top:38%}.f3{left:15%;bottom:12%}
+.sectionheading{text-align:center;margin:17px 0 25px}.sectionheading h2{font-size:25px;letter-spacing:-.8px;margin:0 0 8px}.sectionheading p{margin:0;color:var(--muted);font-size:13px}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-bottom:42px}.card{border:1px solid var(--line);border-radius:18px;padding:22px 20px 20px;box-shadow:0 8px 26px #2e57a20a;transition:transform .2s,box-shadow .2s;min-width:0}.card:hover{transform:translateY(-3px);box-shadow:0 16px 35px #2e57a216}.serviceicon{height:52px;display:flex;align-items:center;gap:9px;font-size:34px;margin-bottom:10px}.ig{display:inline-grid;place-items:center;width:47px;height:47px;border-radius:14px;color:#fff;background:linear-gradient(135deg,#8338ec,#f52f87,#ffad38);font-size:25px}.yt{color:#ff2929}.music{color:#713cff}.card h3{font-size:20px;letter-spacing:-.5px;margin:0 0 9px}.desc{font-size:13px;line-height:1.65;color:var(--muted);min-height:43px;margin:0 0 12px}.pill{display:inline-block;border-radius:8px;padding:6px 10px;background:#fff0fb;color:#b42dba;font-size:11px;font-weight:700;margin-bottom:16px}.urlbox{position:relative;margin-bottom:13px}.urlbox span{position:absolute;left:13px;top:12px;color:#7185ab}.urlbox input{width:100%;border:1px solid #d9e3f7;border-radius:10px;padding:13px 12px 13px 39px;outline:none;color:var(--ink);background:#fff;font-size:12px}.urlbox input:focus{border-color:#8b70ff;box-shadow:0 0 0 3px #7e5bff18}.choices{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}.choice{border:1px solid #dce5f5;background:#fff;border-radius:9px;padding:10px 5px;font-size:12px;font-weight:750;color:#4c6287}.choice.active{color:#fff;border-color:transparent;background:linear-gradient(100deg,#3979ff,#8b37f7)}.primary{width:100%;border:0;border-radius:10px;color:white;font-weight:750;font-size:13px;padding:13px 15px;background:linear-gradient(100deg,#f33398,#9738ef,#5c52ff);box-shadow:0 8px 18px #8b47e925;display:flex;justify-content:center;align-items:center;gap:8px}.primary:hover{filter:brightness(1.04)}.notice{display:flex;align-items:flex-start;gap:8px;border:1px solid #d8f5e8;background:#f3fff9;border-radius:9px;padding:10px 11px;margin-top:13px;color:#278568;font-size:11px;line-height:1.5}.notice b{font-size:14px}.status{font-size:12px;line-height:1.5;color:#53698e;margin-top:10px;overflow-wrap:anywhere}.status.error{color:#c32e55}footer{text-align:center;padding:24px 16px 30px;border-top:1px solid #f0f3fa;color:#7185ab;font-size:11px}footer a{display:inline-block;color:#5144ff;font-weight:800;font-size:14px;margin:5px 0 10px}footer .heart{color:#f33b70}
+@media(max-width:900px){.navlinks{gap:12px}.navlinks a{font-size:11px}.hero{gap:12px}.cards{gap:12px}.card{padding:18px 15px}.desc{min-height:63px}}
+@media(max-width:700px){.wrap{width:calc(100% - 26px);max-width:520px}.nav{height:66px}.brand{font-size:17px}.logo{width:36px;height:36px}.menu{display:block}.navlinks{display:none;position:absolute;top:66px;left:12px;right:12px;padding:13px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 15px 30px #243a6415;flex-direction:column;align-items:stretch;gap:0}.navlinks.open{display:flex}.navlinks a{padding:12px 9px;font-size:13px}.hero{grid-template-columns:1fr;padding:35px 0 24px}.heroart{min-height:245px;order:-1}.hero-copy{text-align:center}.hero p{margin:auto}.checks{justify-content:center;gap:10px}.phone{width:170px;height:230px}.bigicon{font-size:49px}.float{font-size:20px;padding:9px 12px}.f1{left:7%}.f2{right:6%}.cards{grid-template-columns:1fr}.card{padding:21px}.desc{min-height:0}.sectionheading h2{font-size:23px}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="brand" href="#home"><span class="logo">⇩</span><span>InstaYt <span style="color:#6244ff">Downloader</span><small>FAST · SIMPLE · FREE</small></span></a>
+<button class="menu" id="menu" aria-label="Open menu">☰</button>
+<nav class="navlinks" id="navlinks"><a href="#home">⌂ Home</a><a href="#instagram-video">◎ Instagram Video</a><a href="#instagram-audio">♫ Instagram Audio</a><a href="#youtube-audio">▶ YouTube Audio</a></nav>
+</div></header>
+<main class="wrap" id="home">
+<section class="hero">
+<div class="hero-copy"><span class="eyebrow"><i class="dot"></i> YOUR ALL-IN-ONE DOWNLOADER</span><h1>Download Your<br><span>Favorite Content</span></h1><p>Instagram videos, Instagram audio and YouTube audio — all in one clean, simple place.</p><div class="checks"><span><i class="checkicon">ϟ</i> High Quality</span><span><i class="checkicon">✓</i> Simple & Fast</span><span><i class="checkicon">☁</i> No Sign-up</span></div></div>
+<div class="heroart" aria-hidden="true"><div class="float f1">📸</div><div class="float f2">♫</div><div class="float f3">▶️</div><div class="phone"><div class="bigicon">📲</div><div class="mini">Paste link here…</div><div class="downloadbubble">↓</div></div></div>
+</section>
+<section id="downloaders"><div class="sectionheading"><h2>Choose What You Want to Download</h2><p>Three separate tools, one premium experience.</p></div>
+<div class="cards">
+<article class="card" id="instagram-video"><div class="serviceicon"><span class="ig">◎</span><span style="color:#d72bcb">▣</span></div><h3>Instagram Video Downloader</h3><p class="desc">Save Instagram Reels and videos in your preferred quality.</p><span class="pill">720p · 1018p · With Audio</span><div class="urlbox"><span>↗</span><input id="igVideoUrl" type="url" placeholder="Paste Instagram video / Reel link"></div><div class="choices" data-group="igVideo"><button class="choice active" type="button">720p</button><button class="choice" type="button">1018p</button></div><button class="primary" type="button" data-download="igVideo">↓ &nbsp; Download Video</button><div class="notice"><b>✓</b><span>Your link will be cleared from this form after the request.</span></div><div class="status" id="igVideoStatus" aria-live="polite"></div></article>
+<article class="card" id="instagram-audio"><div class="serviceicon"><span class="ig">◎</span><span class="music">♫</span></div><h3>Instagram Audio Downloader</h3><p class="desc">Get audio from an Instagram Reel or video you have permission to save.</p><span class="pill">Audio · MP3-ready workflow</span><div class="urlbox"><span>↗</span><input id="igAudioUrl" type="url" placeholder="Paste Instagram Reel / video link"></div><div class="choices" data-group="igAudio"><button class="choice active" type="button">MP3</button><button class="choice" type="button">M4A</button></div><button class="primary" type="button" data-download="igAudio">↓ &nbsp; Download Audio</button><div class="notice"><b>✓</b><span>Your link will be cleared from this form after the request.</span></div><div class="status" id="igAudioStatus" aria-live="polite"></div></article>
+<article class="card" id="youtube-audio"><div class="serviceicon"><span class="yt">▶</span><span class="music">♫</span></div><h3>YouTube Audio Downloader</h3><p class="desc">Use a YouTube link to request an audio file in your chosen format.</p><span class="pill">MP3 · M4A · Audio</span><div class="urlbox"><span>↗</span><input id="ytAudioUrl" type="url" placeholder="Paste YouTube video link"></div><div class="choices" data-group="ytAudio"><button class="choice active" type="button">MP3</button><button class="choice" type="button">M4A</button></div><button class="primary" type="button" data-download="ytAudio">↓ &nbsp; Download Audio</button><div class="notice"><b>✓</b><span>Your link will be cleared from this form after the request.</span></div><div class="status" id="ytAudioStatus" aria-live="polite"></div></article>
+</div></section>
+</main>
+<section class="features"><div class="wrap"><div class="sectionheading"><h2>Why Choose Our Downloader?</h2><p>Simple, fast and convenient — all in one place.</p></div><div class="featuregrid"><div class="feature"><div class="ico">ϟ</div><b>High Quality</b><small>Quality options where supported</small></div><div class="feature"><div class="ico">✓</div><b>No Registration</b><small>No account needed for this interface</small></div><div class="feature"><div class="ico">🚀</div><b>Simple Workflow</b><small>Paste a link and choose a format</small></div><div class="feature"><div class="ico">♙</div><b>Privacy Minded</b><small>Links clear after each request</small></div><div class="feature"><div class="ico">▣</div><b>Mobile Friendly</b><small>Works across screen sizes</small></div></div></div></section>
+<footer><div>〈/〉 Developer</div><a href="https://t.me/EREN_H4X" target="_blank" rel="noopener">t.me/EREN_H4X</a><div>Made with <span class="heart">♥</span> for everyone</div><p style="max-width:680px;margin:14px auto 0;line-height:1.6">Demo front-end: real media processing requires a compatible backend/API. Download only content you own or are authorized to save.</p></footer>
+<script>
+const menu=document.getElementById('menu'), nav=document.getElementById('navlinks');
+menu.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+document.querySelectorAll('.choices').forEach(group=>group.querySelectorAll('.choice').forEach(btn=>btn.addEventListener('click',()=>{group.querySelectorAll('.choice').forEach(b=>b.classList.remove('active'));btn.classList.add('active')})));
+const configs={
+ igVideo:{input:'igVideoUrl',status:'igVideoStatus',label:'Instagram video'},
+ igAudio:{input:'igAudioUrl',status:'igAudioStatus',label:'Instagram audio'},
+ ytAudio:{input:'ytAudioUrl',status:'ytAudioStatus',label:'YouTube audio'}
+};
+document.querySelectorAll('[data-download]').forEach(btn=>btn.addEventListener('click',()=>{
+ const key=btn.dataset.download,c=configs[key],input=document.getElementById(c.input),status=document.getElementById(c.status),url=input.value.trim();
+ status.className='status';
+ if(!url){status.classList.add('error');status.textContent='Please paste a link first.';input.focus();return}
+ let parsed;try{parsed=new URL(url)}catch(e){status.classList.add('error');status.textContent='Please enter a valid URL.';return}
+ if(!['http:','https:'].includes(parsed.protocol)){status.classList.add('error');status.textContent='Please enter a valid http/https link.';return}
+ const chosen=btn.parentElement.querySelector('.choices .active');
+ const format=chosen?chosen.textContent.trim():'default';
+ input.value='';
+ btn.disabled=true; btn.style.opacity='.7'; btn.innerHTML='⏳ &nbsp; Preparing download…';
+ status.textContent='Checking link and preparing your file…';
+ fetch('/api/download', {
+   method:'POST',
+   headers:{'Content-Type':'application/json'},
+   body:JSON.stringify({url:url, kind:key, format:format})
+ }).then(async response=>{
+   if(!response.ok){
+     let msg='Download failed. Check the link or try again.';
+     try{const data=await response.json();if(data.error)msg=data.error}catch(e){}
+     throw new Error(msg);
+   }
+   const blob=await response.blob();
+   const disposition=response.headers.get('Content-Disposition')||'';
+   const match=disposition.match(/filename="?([^";]+)"?/i);
+   const filename=match?match[1]:'download';
+   const objectUrl=URL.createObjectURL(blob);
+   const a=document.createElement('a');a.href=objectUrl;a.download=filename;
+   document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(objectUrl);
+   status.className='status success';status.textContent='Download started. Your link was removed from the form.';
+ }).catch(err=>{
+   status.className='status error';status.textContent=err.message||'Could not connect to the download server.';
+ }).finally(()=>{
+   btn.disabled=false;btn.style.opacity='1';
+   btn.innerHTML=key==='igVideo'?'↓ &nbsp; Download Video':'↓ &nbsp; Download Audio';
+ });
+}));
+</script>
+</body>
+</html>
